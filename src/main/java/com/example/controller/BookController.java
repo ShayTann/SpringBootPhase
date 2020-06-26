@@ -81,14 +81,14 @@ public class BookController {
 		}
 	}
 	@GetMapping("del/{Id}")
-	public void delBookById(@PathVariable int Id) throws IOException {
+	public String delBookById(@PathVariable int Id) throws IOException {
 		repo3.deleteById(Id);
 		if(synchronised==true) {
 			synchronised = false;
 			Update();
 			System.out.println(synchronised);
 			}
-		
+		return "Le livre à été bien supprimer " ;
 	}
 	@GetMapping("/search/{name}")
 	public List<BookElastic> findbyName(@PathVariable String name) {
